@@ -523,6 +523,24 @@
     </div>
 
     <script>
+        // Access token validation
+        const params = new URLSearchParams(window.location.search);
+        const token = params.get('token');
+        const validToken = 'payhip_2026_course';
+
+        if (token !== validToken) {
+            document.body.innerHTML = `
+                <div style="padding: 60px 20px; text-align: center; background: #fcfcf9; min-height: 100vh; display: flex; align-items: center; justify-content: center;">
+                    <div style="max-width: 500px;">
+                        <h2 style="color: #133c3b; margin-bottom: 16px; font-size: 24px;">Access Restricted</h2>
+                        <p style="color: #626c71; font-size: 16px; line-height: 1.6; margin: 0;">
+                            This resource is only available to enrolled course students. If you've purchased the course, please access this link from within your course materials.
+                        </p>
+                    </div>
+                </div>
+            `;
+        }
+
         const sections = document.querySelectorAll('.section');
         const navTabs = document.querySelectorAll('.nav-tab');
         const progressDots = document.querySelectorAll('.progress-dot');
